@@ -267,6 +267,46 @@ bool BigNumber:: operator<( const BigNumber & myBig) const{
     return !(*this >= myBig);
 }
 
+BigNumber BigNumber::operator++(int)
+{
+    BigNumber temp = *this;
+    if(sign == false){
+        numArray = new int8_t[numOfDigits];
+        for (size_t i{0};i<numOfDigits;++i) {
+            temp.numArray[i-(numOfDigits-1)]--;
+        }
+        numArray--;
+    }
+    else {
+        numArray = new int8_t[numOfDigits];
+        for (size_t i{0};i<numOfDigits;++i) {
+            temp.numArray[i-(numOfDigits-1)]++;
+        }
+        numArray++;
+    }
+    return temp;
+}
+
+BigNumber BigNumber::operator--(int)
+{
+    BigNumber temp = *this;
+    if(sign == false ){
+        numArray = new int8_t[numOfDigits];
+        for (size_t i{0};i<numOfDigits;++i) {
+            temp.numArray[i-(numOfDigits-1)]++;
+        }
+        numArray--;
+    }
+    else {
+        numArray = new int8_t[numOfDigits];
+        for (size_t i{0};i<numOfDigits;++i) {
+            temp.numArray[i-(numOfDigits-1)]--;
+        }
+        numArray--;
+    }
+    return temp;
+}
+
 BigNumber BigNumber:: absoluteValue() const{
     BigNumber temp;
     temp.sign = true;
