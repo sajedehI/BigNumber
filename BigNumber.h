@@ -57,6 +57,7 @@ public:
     BigNumber operator--(int);
     BigNumber absoluteValue() const;
     BigNumber operator>>( unsigned shift );
+    BigNumber operator<<( unsigned int shift );
 };
 
 

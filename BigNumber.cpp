@@ -455,3 +455,21 @@ BigNumber BigNumber:: operator>>( unsigned shift ){
     }
     return temp;
 }
+
+BigNumber BigNumber::operator<<(unsigned int shift)
+{
+    BigNumber temp;
+    temp.sign = sign;
+    temp.numOfDigits = numOfDigits + shift;
+    temp.numArray = new int8_t[temp.numOfDigits];
+    for( size_t i{0}; i < shift; ++i ){
+        temp.numArray[i] = 0;
+    }
+    int j =0;
+    for( size_t i{shift}; i < temp.numOfDigits; ++i ){
+        temp[i] = numArray[j];
+        j++;
+    }
+
+    return temp;
+}
